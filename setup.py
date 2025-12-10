@@ -16,7 +16,7 @@ This will extract the last sharp frame and save it as `movie_lastframe.jpg`
 
 setup(
     name="lastframe",
-    version="1.0.0",
+    version="1.1.0",
     description="Extract the last non-blurry frame from videos",
     author="lastframe",
     packages=find_packages(),

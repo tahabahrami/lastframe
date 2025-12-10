@@ -14,12 +14,13 @@ Smart CLI tool that automatically detects and extracts the sharpest frame from t
 ## 🔥 Features
 
 - **🧠 Smart Blur Detection** - Automatically checks last 3 frames and picks the sharpest one using Laplacian variance
+- **📦 Batch Processing** - Process entire folders of videos at once (NEW in v1.1!)
+- **🎯 Custom Output** - Specify custom output files or directories (NEW in v1.1!)
 - **💎 Quality Preserved** - Saves as JPEG with 100% quality (zero compression, full flex)
 - **🎥 Universal Format Support** - MP4, MOV, AVI, MKV, WebM, and more
 - **✨ Beautiful UI** - Modern terminal output with colors, emojis, and vibes
 - **🌍 Cross-Platform** - Works on macOS, Windows, and Linux
 - **⚡ Lightning Fast** - Processes videos in seconds
-- **🎯 Simple API** - One command, that's it
 
 ---
 
@@ -29,8 +30,11 @@ Smart CLI tool that automatically detects and extracts the sharpest frame from t
 # Install
 pip install -e .
 
-# Use
+# Single video
 lastframe movie.mp4
+
+# Batch process
+lastframe ./videos
 
 # Profit 💰
 ```
@@ -61,39 +65,37 @@ See [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md) for detailed Windows setup.
 
 ## 💻 Usage
 
-```bash
-lastframe <video_file>
-```
-
-### Examples
+### Single File Mode
 
 ```bash
-# Basic usage
-lastframe movie.mp4
+# Default output (same directory)
+lastframe video.mp4                    # → video_lastframe.jpg
 
-# With spaces (use quotes)
-lastframe "vacation video.mp4"
-
-# Full path
-lastframe /path/to/video.mp4
+# Custom output file
+lastframe video.mp4 output.jpg         # → output.jpg
 ```
 
-### Output
+### Batch Mode (NEW! 🎉)
 
-Creates `<filename>_lastframe.jpg` in the same directory as your video.
+Process entire directories of videos at once:
 
-**Example:**
-- Input: `movie.mp4`
-- Output: `movie_lastframe.jpg` ✨
+```bash
+# Process all videos in a directory
+lastframe ./videos                     # → ./videos/*_lastframe.jpg
+
+# Process to custom output directory
+lastframe ./videos ./output            # → ./output/*_lastframe.jpg
+```
 
 ---
 
 ## 🎨 Demo
 
+### Single File Mode
 ```bash
 $ lastframe shaky_video.mp4
 
-lastframe v1.0.0
+lastframe v1.1.0
 
 ✓ extracted 2nd last frame (last was blurry 🔍 score: 892.1)
 ✓ saved to shaky_video_lastframe.jpg
@@ -102,6 +104,28 @@ lastframe v1.0.0
 │   video: 1280x720 • 150 frames • 24.0 fps    │
 │   frame: #149 of 150                         │
 ╰──────────────────────────────────────────────╯
+```
+
+### Batch Mode
+```bash
+$ lastframe ./videos
+
+lastframe v1.1.0 • batch mode
+
+📁 Input:  videos
+📤 Output: videos
+🎬 Videos: 15 found
+
+  Processing clip_015.mp4... ━━━━━━━━━━━━━━━━━ 100%
+
+✓ Batch processing complete!
+
+┏━━━━━━━━━━━━━━┳━━━━━━━┓
+┃ Status       ┃ Count ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━┩
+│ ✓ Success    │    15 │
+│ Total        │    15 │
+└──────────────┴───────┘
 ```
 
 The tool intelligently tells you what it did:
@@ -131,6 +155,50 @@ The tool intelligently tells you what it did:
 - 📱 **Social Media** - Get crisp frames for posts
 - 🎬 **Content Creation** - Quick frame extraction
 - 📊 **Analysis** - Extract frames for CV/ML tasks
+- 🗂️ **Batch Processing** - Process entire video libraries at once (NEW!)
+
+---
+
+## 📚 Examples
+
+### Basic Usage
+
+```bash
+# Single video, default output
+lastframe movie.mp4
+
+# Single video, custom output
+lastframe movie.mp4 thumbnail.jpg
+
+# With spaces (use quotes)
+lastframe "vacation video.mp4" "vacation thumbnail.jpg"
+```
+
+### Batch Processing
+
+```bash
+# Process all videos in current directory
+lastframe .
+
+# Process videos in specific directory
+lastframe ~/Videos/recordings
+
+# Process to different output directory
+lastframe ./input ./output
+
+# Process to organized output folder
+lastframe ~/Downloads/videos ~/Pictures/thumbnails
+```
+
+### Advanced
+
+```bash
+# Full paths
+lastframe /path/to/video.mp4 /path/to/output.jpg
+
+# Batch with full paths
+lastframe /Volumes/External/videos /Volumes/External/frames
+```
 
 ---
 
@@ -154,13 +222,19 @@ Dependencies auto-install during setup.
 
 ---
 
-## 🎮 Options
+## 🎮 Command Reference
 
 ```bash
--h, --help     Show help message
-```
+# Help
+lastframe --help
+lastframe -h
 
-More options coming soon! 🚧
+# Single file mode
+lastframe <video_file> [output_file]
+
+# Batch mode
+lastframe <input_directory> [output_directory]
+```
 
 ---
 
@@ -168,11 +242,12 @@ More options coming soon! 🚧
 
 Got you covered with helpful error messages:
 
-- ❌ File not found
+- ❌ File/directory not found
 - ❌ Unsupported formats
 - ❌ Corrupted videos
 - ❌ Permission issues
 - ❌ Empty videos
+- ❌ Invalid output paths
 
 Each error includes suggestions to fix it. No more guessing! 💡
 
@@ -242,9 +317,28 @@ See [LICENSE](LICENSE) for details.
 - ✅ Cross-platform support
 - ✅ Error handling
 - ✅ Documentation
-- 🚧 Batch processing (coming soon)
-- 🚧 Custom output paths (coming soon)
+- ✅ Batch processing (v1.1.0)
+- ✅ Custom output paths (v1.1.0)
 - 🚧 Video format conversion (coming soon)
+- 🚧 GPU acceleration (coming soon)
+
+---
+
+## 📖 Changelog
+
+### v1.1.0 (Latest)
+- ✨ Added batch processing - process entire directories
+- ✨ Added custom output support - specify output file/directory
+- 🎨 Improved progress display with progress bars
+- 🎨 Added summary table for batch operations
+- 📝 Updated documentation and examples
+
+### v1.0.0
+- 🎉 Initial release
+- 🧠 Smart blur detection
+- 💎 Maximum quality output
+- 🌍 Cross-platform support
+- ✨ Beautiful terminal UI
 
 ---
 
@@ -284,6 +378,12 @@ lastframe movie.mov
 
 # Handles spaces in filenames
 lastframe "my vacation 2024.mp4"
+
+# Batch process your entire video library
+lastframe ~/Movies/clips ~/Movies/thumbnails
+
+# Organize your output
+lastframe ./raw-footage ./extracted-frames
 ```
 
 ---
