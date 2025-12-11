@@ -161,3 +161,11 @@ test_video.mp4
 *.tmp
 temp/
 tmp/
+
+# PyInstaller
+build/
+*.spec
+dist/lastframe
+# Keep release binaries
+!dist/lastframe-mac
+!dist/lastframe-windows.exe

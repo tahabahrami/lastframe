@@ -11,6 +11,25 @@ Smart CLI tool that automatically detects and extracts the sharpest frame from t
 
 ---
 
+## 📥 Download (No Python Required!)
+
+**For non-technical users - just download and use!**
+
+### 🍎 macOS
+[**Download lastframe for Mac**](https://github.com/tahabahrami/lastframe/releases/latest/download/lastframe-mac)
+
+→ [Complete Mac Guide](USER_GUIDE_MAC.md)
+
+### 🪟 Windows
+[**Download lastframe for Windows**](https://github.com/tahabahrami/lastframe/releases/latest/download/lastframe-windows.exe)
+
+→ [Complete Windows Guide](USER_GUIDE_WINDOWS.md)
+
+### ⚡ Quick Start
+Don't know where to begin? Check out the [Quick Start Guide](QUICK_START.md)!
+
+---
+
 ## 🔥 Features
 
 - **🧠 Smart Blur Detection** - Automatically checks last 3 frames and picks the sharpest one using Laplacian variance
@@ -43,23 +62,45 @@ lastframe ./videos
 
 ## 📦 Installation
 
-### macOS / Linux
+### Option 1: Standalone Executables (Recommended for Beginners) ⭐
+
+**No Python installation required!**
+
+#### macOS 🍎
+1. [Download lastframe-mac](https://github.com/tahabahrami/lastframe/releases/latest)
+2. Right-click → Open (first time only)
+3. Use it: `./lastframe-mac movie.mp4`
+
+📖 [Complete Mac Guide](USER_GUIDE_MAC.md)
+
+#### Windows 🪟
+1. [Download lastframe-windows.exe](https://github.com/tahabahrami/lastframe/releases/latest)
+2. Click "More info" → "Run anyway" (first time only)
+3. Use it: `lastframe-windows.exe movie.mp4`
+
+📖 [Complete Windows Guide](USER_GUIDE_WINDOWS.md)
+
+---
+
+### Option 2: Python Install (For Developers)
+
+#### macOS / Linux
 
 ```bash
 cd lastframe_app
 pip3 install -e .
 ```
 
-### Windows
+#### Windows
 
-**Option 1:** Double-click `install_windows.bat`
+**Method 1:** Double-click `install_windows.bat`
 
-**Option 2:** Manual install
+**Method 2:** Manual install
 ```cmd
 pip install -e .
 ```
 
-See [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md) for detailed Windows setup.
+See [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md) for detailed setup.
 
 ---
 
